@@ -104,6 +104,7 @@ jobs:
         working-directory: TVBoxOSC
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
+          sed -i 's|buildPython.*|buildPython "python3"|g' pyramid/build.gradle
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
